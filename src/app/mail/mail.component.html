@@ -1,0 +1,25 @@
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-inbox"><i
+          class="fa fa-inbox"></i>
+      </span>Primary</a></li>
+  <li><a href="#profile" data-toggle="tab"><span class="glyphicon glyphicon-user"></span>
+      Social</a></li>
+  <li><a href="#messages" data-toggle="tab"><span class="glyphicon glyphicon-tags"></span>
+      Promotions</a></li>
+  <li><a href="#settings" data-toggle="tab"><span class="glyphicon glyphicon-plus no-margin">
+      </span></a></li>
+</ul>
+<table class="table table-inbox table-hover">
+  <tbody>
+    <tr class="unread" *ngFor="let mail of mail">
+      <td class="inbox-small-cells">
+        <input type="checkbox" class="mail-checkbox">
+      </td>
+      <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
+      <td class="view-message  dont-show">Mail From {{mail.senderName}}</td>
+      <td class="view-message ">{{mail.subject}}</td>
+      <td class="view-message  inbox-small-cells"></td>
+      <td class="view-message  text-right"><button class="btn btn-primary" (click)="viewMail(mail._id)">View</button>
+    </tr>
+  </tbody>
+</table>

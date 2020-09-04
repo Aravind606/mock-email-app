@@ -1,0 +1,71 @@
+<br>
+<br>
+<div class="container bootdey">
+  <div class="email-app">
+    <!-- <nav>
+        <a href="#" class="btn btn-danger btn-block">New Email</a>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-inbox"></i> Inbox <span class="badge badge-danger">4</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-star"></i> Stared</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-rocket"></i> Sent</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-trash-o"></i> Trash</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-bookmark"></i> Important</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-inbox"></i> Inbox <span class="badge badge-danger">4</span></a>
+            </li>
+        </ul>
+    </nav> -->
+    <main>
+      <p class="text-center">New Message</p>
+      <form [formGroup]="mailForm">
+        <div class="form-row mb-3">
+          <label for="to" class="col-2 col-sm-1 col-form-label">To:</label>
+          <div class="col-10 col-sm-11">
+            <input type="email" class="form-control" formControlName="toAddress" id="to" placeholder="Type email">
+            <div *ngIf="mailForm.get('toAddress').touched && mailForm.get('toAddress').invalid">
+              <div *ngIf="mailForm.get('toAddress').errors.required" class="alert text-danger mt-1">Send Address is
+                required
+              </div>
+              <div *ngIf="mailForm.get('toAddress').errors.email" class="alert text-danger mt-1"> must be a valid
+                email address</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row mb-3">
+          <label for="cc" class="col-2 col-sm-1 col-form-label">Subject:</label>
+          <div class="col-10 col-sm-11">
+            <input type="text" class="form-control" formControlName="subject" id="cc" placeholder="subject">
+            <div *ngIf="mailForm.get('subject').touched && mailForm.get('subject').invalid" class="text-danger">Subject
+              Is Required</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-11 ml-auto">
+            <div class="form-group mt-4">
+              <textarea class="form-control" formControlName="details" id="message" name="body" rows="12"
+                placeholder="Type Your Message"></textarea>
+              <div *ngIf="mailForm.get('details').touched && mailForm.get('details').invalid" class="text-danger">Type
+                Message to Send</div>
+            </div>
+            <div class="form-group">
+              <div class="text-danger text-center" *ngIf="invalidEmail">Invalid Send Address</div>
+              <div class="text-success text-center" *ngIf="mailSent">Mail has Sent</div>
+              <button type="submit" class="btn btn-success" [disabled]="!mailForm.valid" (click)="mail()">Send</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </main>
+  </div>
+</div>
